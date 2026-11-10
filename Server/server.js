@@ -5,7 +5,13 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://feedback-bu8h.vercel.app/"
+  ],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
